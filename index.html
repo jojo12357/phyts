@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHYSLAB AI - Физикалық зертхана</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">⌖</div>
+                <div class="logo-text">
+                    <h1>PHYSLAB AI</h1>
+                    <span>Физикалық зертхана</span>
+                </div>
+            </div>
+            
+            <nav class="nav-menu" id="navMenu">
+                <a href="#hero" class="nav-link">Басты</a>
+                <a href="#labs" class="nav-link">Зертханалар</a>
+                <a href="#solar" class="nav-link">Күне жүйесі</a>
+                <a href="#about" class="nav-link">Туралы</a>
+            </nav>
+            
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">PHYSLAB AI</h1>
+                <h2 class="hero-subtitle">Физикалық зертхана</h2>
+                <p class="hero-description">
+                    замануалы физикалық зертханасы. интерактивді симулациялар, 
+                    нақты есептеулер және талдау арқылы физиканы үйреніңіз.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#labs" class="btn btn-primary">Зертханаларға өту</a>
+                    <a href="#solar" class="btn btn-secondary">Күне жүйесін көру</a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual" id="heroVisual">
+            <canvas id="heroCanvas"></canvas>
+        </div>
+    </section>
+
+    <!-- Laboratories Section -->
+    <section id="labs" class="labs-section">
+        <div class="container">
+            <h2 class="section-title">Физикалық зертханалар</h2>
+            <div class="labs-grid">
+                
+                <!-- Laboratory 1: Uniform Motion -->
+                <div class="lab-card" data-lab="uniform">
+                    <div class="lab-header">
+                        <h3>Теңүдемелі қозғалыс</h3>
+                        <div class="lab-status">Белсенді</div>
+                    </div>
+                    <div class="lab-content">
+                        <div class="lab-controls">
+                            <div class="control-group">
+                                <label>Бастапқы жылдамдық (v₀):</label>
+                                <input type="number" id="uniform-v0" value="10" step="0.1">
+                                <span class="unit">м/с</span>
+                            </div>
+                            <div class="control-group">
+                                <label>Уақыт (t):</label>
+                                <input type="number" id="uniform-time" value="5" step="0.1">
+                                <span class="unit">с</span>
+                            </div>
+                            <div class="control-group">
+                                <label>Теңдеу (a):</label>
+                                <input type="number" id="uniform-accel" value="2" step="0.1">
+                                <span class="unit">м/с²</span>
+                            </div>
+                            <button class="btn-run" data-lab="uniform">Симулацияны орындау</button>
+                        </div>
+                        <div class="lab-visualization">
+                            <canvas id="uniformCanvas" width="300" height="200"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Laboratory 2: Projectile Motion -->
+                <div class="lab-card" data-lab="projectile">
+                    <div class="lab-header">
+                        <h3>Горизонталь лақтырылған дене</h3>
+                        <div class="lab-status">Белсенді</div>
+                    </div>
+                    <div class="lab-content">
+                        <div class="lab-controls">
+                            <div class="control-group">
+                                <label>Бастапқы жылдамдық (v₀):</label>
+                                <input type="number" id="proj-v0" value="20" step="0.1">
+                                <span class="unit">м/с</span>
+                            </div>
+                            <div class="control-group">
+                                <label>Бұрыш (θ):</label>
+                                <input type="number" id="proj-angle" value="45" step="1">
+                                <span class="unit">°</span>
+                            </div>
+                            <div class="control-group">
+                                <label>Еркін түсу (g):</label>
+                                <input type="number" id="proj-gravity" value="9.8" step="0.1">
+                                <span class="unit">м/с²</span>
+                            </div>
+                            <button class="btn-run" data-lab="projectile">Симулацияны орындау</button>
+                        </div>
+                        <div class="lab-visualization">
+                            <canvas id="projectileCanvas" width="300" height="200"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Laboratory 3: Pendulum -->
+                <div class="lab-card" data-lab="pendulum">
+                    <div class="lab-header">
+                        <h3>Маятникпен g анықтау</h3>
+                        <div class="lab-status">Белсенді</div>
+                    </div>
+                    <div class="lab-content">
+                        <div class="lab-controls">
+                            <div class="control-group">
+                                <label>Маятник ұзындығы (L):</label>
+                                <input type="number" id="pend-length" value="1" step="0.1">
+                                <span class="unit">м</span>
+                            </div>
+                            <div class="control-group">
+                                <label>Тербеліс уақыты (T):</label>
+                                <input type="number" id="pend-period" value="2" step="0.1">
+                                <span class="unit">с</span>
+                            </div>
+                            <button class="btn-run" data-lab="pendulum">Симулацияны орындау</button>
+                        </div>
+                        <div class="lab-visualization">
+                            <canvas id="pendulumCanvas" width="300" height="200"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Laboratory 4: Wave Speed -->
+                <div class="lab-card" data-lab="wave">
+                    <div class="lab-header">
+                        <h3>Беттік толқын жылдамдығын анықтау</h3>
+                        <div class="lab-status">Белсенді</div>
+                    </div>
+                    <div class="lab-content">
+                        <div class="lab-controls">
+                            <div class="control-group">
+                                <label>Толқын ұзындығы (λ):</label>
+                                <input type="number" id="wave-wavelength" value="2" step="0.1">
+                                <span class="unit">м</span>
+                            </div>
+                            <div class="control-group">
+                                <label>Жиілік (f):</label>
+                                <input type="number" id="wave-frequency" value="5" step="0.1">
+                                <span class="unit">Гц</span>
+                            </div>
+                            <button class="btn-run" data-lab="wave">Симулацияны орындау</button>
+                        </div>
+                        <div class="lab-visualization">
+                            <canvas id="waveCanvas" width="300" height="200"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solar System Section -->
+    <section id="solar" class="solar-section">
+        <div class="container">
+            <h2 class="section-title">Күне жүйесі</h2>
+            <div class="solar-container">
+                <canvas id="solarCanvas" width="800" height="600"></canvas>
+                <div class="solar-controls">
+                    <button id="solar-pause" class="btn btn-secondary">Тұрақты</button>
+                    <button id="solar-resume" class="btn btn-primary">Жалғастыру</button>
+                    <button id="solar-reset" class="btn btn-secondary">Қайта орнату</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Measurement Modal -->
+    <div id="measurementModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="measurementTitle">Өлшеу мәндері</h3>
+                <span class="close" data-close="measurementModal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="measurement-table-container">
+                    <table class="measurement-table">
+                        <thead>
+                            <tr>
+                                <th>Өлшеу</th>
+                                <th>Мән</th>
+                                <th>Бірлік</th>
+                            </tr>
+                        </thead>
+                        <tbody id="measurementBody">
+                            <!-- Dynamically filled -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="measurement-results">
+                    <h4>Есептеу нәтижелері:</h4>
+                    <div class="results-grid">
+                        <div class="result-item">
+                            <span class="result-label">Орташа мән:</span>
+                            <span id="averageValue" class="result-value">-</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Абсолют қате:</span>
+                            <span id="absError" class="result-value">-</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Салыстырмалы қате:</span>
+                            <span id="relError" class="result-value">-</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Қорытынды:</span>
+                            <span id="finalResult" class="result-value">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-close="measurementModal">Жабу</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="core.js"></script>
+    <script src="calculations.js"></script>
+    <script src="simulations.js"></script>
+    <script src="ui.js"></script>
+    <script>
+        // Initialize application when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            PHYSLAB.init();
+        });
+    </script>
+</body>
+</html>
